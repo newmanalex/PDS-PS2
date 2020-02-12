@@ -36,3 +36,25 @@ for(iterator in 1:1000){
 
 #find average number of dice casts per game
 mean(casts)
+
+#problem 3
+
+#read the dataset in
+df<-read.csv("http://politicaldatascience.com/PDS/Problem%20Sets/Problem%20Set%202/GSS-data.csv")
+#create function vote.choice
+vote.choice<- function(candidate){
+  #return trump vote count
+   if(candidate=="Trump"){
+    return(length(which(df$pres16=="Trump")))
+  }
+  #return clinton vote count
+  if(candidate=="Clinton"){
+    return(length(which(df$pres16=="Clinton")))
+  }
+  #return other vote count
+  if(candidate=="Other"){
+    return(length(which(df$pres16=="Other candidate (specify)")))
+  }
+  #handle invalid inputs
+  return("Please input either Trump, Clinton, or Other")
+}
