@@ -86,3 +86,28 @@ appoint<- function (president){
   #return the average proportion of time appointees spent serving administration
   return(avgdays/termlength)
 }
+
+#Problem 5
+
+meanage<-NULL
+for(era in unique(congress_age$congress)){
+  currentage<-mean(congress_age$age[congress_age$congress==era])
+  meanage<-c(meanage, currentage)
+}
+
+
+
+
+congress_stats<-function(choice){
+  if(choice=="congress"){
+    for(era in unique(congress_age$congress)){
+      
+      era.age<-mean(congress_age$age[congress_age$congress==era])
+      print (paste(era.age, era))
+    }
+  }
+  if(choice=="state"){
+    
+  }
+  
+}
