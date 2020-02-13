@@ -89,13 +89,6 @@ appoint<- function (president){
 
 #Problem 5
 
-meanage<-NULL
-for(era in unique(congress_age$congress)){
-  currentage<-mean(congress_age$age[congress_age$congress==era])
-  meanage<-c(meanage, currentage)
-}
-
-
 
 
 congress_stats<-function(choice){
@@ -107,7 +100,10 @@ congress_stats<-function(choice){
     }
   }
   if(choice=="state"){
-    
+    for(state in unique(congress_age$state)){
+      state.age<-mean(congress_age$age[congress_age$state==state])
+      print(paste(state.age, state))
+    }
   }
   
 }
