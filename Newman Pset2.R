@@ -68,9 +68,18 @@ turnover<-cabinet_turnover
 #create function appoint that shows average number of days appointees served in administration
 appoint<- function (president){
   #set the term length to calculate average
-  if(president=="Carter"|president=="Bush 41") termlength<-1461
-  if(president=="Reagan"|president=="Clinton"|president=="Bush 43"|president=="Obama") termlength<-2922
-  if(president=="Trump") termlength<-1105
+  if(president=="Carter"|president=="Bush 41") {
+    termlength<-1461
+  }
+  
+  if(president=="Reagan"|president=="Clinton"|president=="Bush 43"|president=="Obama"){
+    termlength<-2922 
+  } 
+  
+  if(president=="Trump"){ 
+    termlength<-1105
+  }
+  
   
   #calculate average number of days in the administration
   avgdays<-mean(turnover$days[turnover$president==president],na.rm=TRUE)
