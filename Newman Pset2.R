@@ -65,7 +65,7 @@ library(fivethirtyeight)
 
 turnover<-cabinet_turnover
 
-#create function appoint that shows average number of days appointees served in administration
+#create function appoint that shows average number of days appointees served in administration given the input of the president
 appoint<- function (president){
   #set the term length to calculate average
   if(president=="Carter"|president=="Bush 41") {
@@ -91,19 +91,28 @@ appoint<- function (president){
 
 
 
+#function provides age information by either congressional era or choice given a choice between "congress" or "state"
+#returns a list of years/states and the average age for each
 congress_stats<-function(choice){
+  #if congress is selected, goes through each unique era and calculates average age in that era
   if(choice=="congress"){
-    for(era in unique(congress_age$congress)){
-      
+    eralist<-unique(congress_age$congress)
+    agelist<-NULL
+    for(era in eralist){
       era.age<-mean(congress_age$age[congress_age$congress==era])
-      print (paste(era.age, era))
+      agelist<-c(agelist, era.age)
     }
+    return(cbind(eralist, agelist))
   }
+  #if state selected, goes through each unique state and calculates average age in that state
   if(choice=="state"){
-    for(state in unique(congress_age$state)){
+    statelist<-unique(congress_age$state)
+    agelist<-NULL
+    for(state in statelist){
       state.age<-mean(congress_age$age[congress_age$state==state])
-      print(paste(state.age, state))
+      agelist<-c(agelist, state.age)
     }
+    return(cbind(statelist, agelist))
   }
   
 }
